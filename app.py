@@ -29,11 +29,11 @@ def calculate_revenue_impact(
         "Reshipments": reshipments,
         "Contact Cost (£)": contact_cost,
         "Reshipment Cost (£)": reshipment_cost,
-        "Total Revenue Impact (£)": total_impact
+        "Total Cost Impact (£)": total_impact
     }])
 
 # --- Streamlit UI ---
-st.title("📦 Revenue Impact Calculator")
+st.title("📦 Wrong dose calculator")
 
 timeframe = st.text_input("Timeframe", value="April 2025")
 total_orders = st.number_input("Total Orders", value=10000, step=100)
@@ -46,9 +46,9 @@ error_rate = st.number_input(
     format="%.4f"
 )
 st.write(f"Using error rate: {error_rate:.4%}")
-aov = st.number_input("Average Order Value (£)", value=50.0, step=1.0)
+aov = st.number_input("Average Order Value (£)", value=120.0, step=1.0)
 contact_rate = st.slider("Contact Rate (% of errored orders)", 0.0, 1.0, 0.7)
-cost_per_contact = st.number_input("Cost per Contact (£)", value=5.0)
+cost_per_contact = st.number_input("Cost per Contact (£)", value=2.0)
 reshipment_rate = st.slider("Reshipment Rate (% of errored orders)", 0.0, 1.0, 0.4)
 
 if st.button("Calculate Impact"):
@@ -63,3 +63,5 @@ if st.button("Calculate Impact"):
     )
     st.success("📊 Revenue Impact Calculated:")
     st.dataframe(df)
+    annualised_cost = df["Total cost impact (£)"].iloc[0] * 12
+    st.markdown(f"### 🧮 Estimated annual cost: £{annualised_cost:,.2f}")
