@@ -37,7 +37,15 @@ st.title("📦 Revenue Impact Calculator")
 
 timeframe = st.text_input("Timeframe", value="April 2025")
 total_orders = st.number_input("Total Orders", value=10000, step=100)
-error_rate = st.number_input("Error Rate (0.0025 = 0.25%)", value=0.0028, step=0.0001, format="%.4f")
+error_rate = st.number_input(
+    "Error Rate (e.g. 0.0028 = 0.28%)",
+    min_value=0.0,
+    max_value=1.0,
+    value=0.0028,
+    step=0.0001,
+    format="%.4f"
+)
+st.write(f"Using error rate: {error_rate:.4%}")
 aov = st.number_input("Average Order Value (£)", value=50.0, step=1.0)
 contact_rate = st.slider("Contact Rate (% of errored orders)", 0.0, 1.0, 0.7)
 cost_per_contact = st.number_input("Cost per Contact (£)", value=5.0)
