@@ -36,7 +36,7 @@ def calculate_revenue_impact(
 st.title("📦 Wrong dose calculator")
 
 timeframe = st.text_input("Timeframe", value="April 2025")
-total_orders = st.number_input("Total Orders", value=10000, step=100)
+total_orders = st.number_input("Total Orders", value=46000, step=100)
 error_rate = st.number_input(
     "Error Rate (e.g. 0.0028 = 0.28%)",
     min_value=0.0,
@@ -63,5 +63,5 @@ if st.button("Calculate Impact"):
     )
     st.success("📊 Revenue Impact Calculated:")
     st.dataframe(df)
-    annualised_cost = df["Total cost impact (£)"].iloc[0] * 12
+    annualised_cost = df["Total Cost Impact (£)"].iloc[0] * 12
     st.markdown(f"### 🧮 Estimated annual cost: £{annualised_cost:,.2f}")

@@ -27,5 +27,5 @@ def calculate_revenue_impact(
         "Reshipments": reshipments,
         "Contact Cost (£)": contact_cost,
         "Reshipment Cost (£)": reshipment_cost,
-        "Total Revenue Impact (£)": total_impact
+        "Total Cost Impact (£)": total_impact
     }])
